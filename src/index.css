@@ -1,0 +1,15 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0a0e17;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

@@ -1,0 +1,71 @@
+.footer-container {
+  background: #25282c;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 70px 24px 30px 24px;
+  font-family: 'Poppins', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-content {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 60px;
+  margin-bottom: 50px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  height: 65px;
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 360px;
+}
+
+.footer-links-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.footer-col h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #00bfff;
+}
+
+.footer-bottom {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+}

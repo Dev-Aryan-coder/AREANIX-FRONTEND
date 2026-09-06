@@ -1,0 +1,84 @@
+.why-choose-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+.why-choose-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #00bfff;
+  background: rgba(0, 191, 255, 0.12);
+  border: 1px solid rgba(0, 191, 255, 0.35);
+  padding: 6px 16px;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 16px;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+}
+
+.why-choose-content-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  padding: 44px 40px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  margin-top: 25px;
+  transition: border-color 0.3s ease;
+}
+
+.why-choose-content-box:hover {
+  border-color: rgba(0, 191, 255, 0.3);
+}
+
+.why-choose-paragraph {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.85;
+  text-align: justify;
+  text-align-last: center;
+  margin: 0 0 35px 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.why-choose-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.highlight-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.highlight-pill:hover {
+  background: rgba(0, 191, 255, 0.12);
+  border-color: rgba(0, 191, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.highlight-icon {
+  font-size: 1.1rem;
+}
+
+.highlight-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}

@@ -1,0 +1,19 @@
+.home-page {
+  background-color: #333333;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.home-content-section {
+  background-color: #151515;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.section-divider-line {
+  max-width: 1250px;
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), rgba(0, 191, 255, 0.5), rgba(255, 255, 255, 0.25), transparent);
+}

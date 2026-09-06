@@ -1,0 +1,666 @@
+{
+	"info": {
+		"_postman_id": "areanix-collection-66-complete",
+		"name": "AREANIX Platform (All 66 APIs Complete)",
+		"description": "Master Postman Collection containing 100% of all 66 REST APIs across 10 controllers in AREANIX Esports platform.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication & Registration (10 APIs)",
+			"item": [
+				{
+					"name": "API #1a: Register Admin (yonexffyt14@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Aryan Admin\",\n  \"email\": \"yonexffyt14@gmail.com\",\n  \"password\": \"adminpass123\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1b: Register Player 1 (pilankararyan148@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Aryan Player\",\n  \"email\": \"pilankararyan148@gmail.com\",\n  \"password\": \"aryanplayer123\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1c: Register Player 2 (2006pillubhai@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Pillu Player\",\n  \"email\": \"2006pillubhai@gmail.com\",\n  \"password\": \"pilluplayer456\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1d: Register Recruiter (jadhavamitv746@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Amit Jadhav\",\n  \"email\": \"jadhavamitv746@gmail.com\",\n  \"password\": \"recruiterpass789\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1e: Register Organizer (pilankarshreyash53@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Shreyash Organizer\",\n  \"email\": \"pilankarshreyash53@gmail.com\",\n  \"password\": \"organizerpass999\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1f: Register Player 3 (tanmayamte2004@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Tanmay Amte Player 3\",\n  \"email\": \"tanmayamte2004@gmail.com\",\n  \"password\": \"tanmaypass123\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1g: Register Player 4 (tanmayamte10@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Tanmay Amte Player 4\",\n  \"email\": \"tanmayamte10@gmail.com\",\n  \"password\": \"tanmaypass456\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1h: Register Recruiter 2 (amtetanmay0011@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Tanmay Recruiter Agency\",\n  \"email\": \"amtetanmay0011@gmail.com\",\n  \"password\": \"recruiterpass001\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #1i: Register Organizer 2 (liopix696901@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"LioPix Esports Streamer\",\n  \"email\": \"liopix696901@gmail.com\",\n  \"password\": \"organizerpass69\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/register", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "register"] }
+					}
+				},
+				{
+					"name": "API #2a: Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/login?email=yonexffyt14@gmail.com&password=adminpass123", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "login"], "query": [{ "key": "email", "value": "yonexffyt14@gmail.com" }, { "key": "password", "value": "adminpass123" }] }
+					}
+				},
+				{
+					"name": "API #2b: Login Player 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/login?email=pilankararyan148@gmail.com&password=aryanplayer123", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "login"], "query": [{ "key": "email", "value": "pilankararyan148@gmail.com" }, { "key": "password", "value": "aryanplayer123" }] }
+					}
+				},
+				{
+					"name": "API #3: Forgot Password (Send OTP)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/forgot-password?email=pilankararyan148@gmail.com", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "forgot-password"], "query": [{ "key": "email", "value": "pilankararyan148@gmail.com" }] }
+					}
+				},
+				{
+					"name": "API #4: Verify Password OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/verify-otp?email=pilankararyan148@gmail.com&otp=123456", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "verify-otp"], "query": [{ "key": "email", "value": "pilankararyan148@gmail.com" }, { "key": "otp", "value": "123456" }] }
+					}
+				},
+				{
+					"name": "API #5: Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/reset-password?email=pilankararyan148@gmail.com&otp=123456&newPassword=newsecret123", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "reset-password"], "query": [{ "key": "email", "value": "pilankararyan148@gmail.com" }, { "key": "otp", "value": "123456" }, { "key": "newPassword", "value": "newsecret123" }] }
+					}
+				},
+				{
+					"name": "API #6: Add Role to Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/2/addrole/PLAYER", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "2", "addrole", "PLAYER"] }
+					}
+				},
+				{
+					"name": "API #7: Get Account Roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/2/roles", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "2", "roles"] }
+					}
+				},
+				{
+					"name": "API #8: Search Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/search?query=Aryan", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "search"], "query": [{ "key": "query", "value": "Aryan" }] }
+					}
+				},
+				{
+					"name": "API #9: Get User By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/user/getby/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "getby", "2"] }
+					}
+				},
+				{
+					"name": "API #10: Patch User Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"fullname\": \"Aryan Anand Pilankar\"\n}" },
+						"url": { "raw": "http://localhost:8080/user/patch/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["user", "patch", "2"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Player Workflow (8 APIs)",
+			"item": [
+				{
+					"name": "API #11a: Onboard Player 1 Profile (pilankararyan148@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"userId\": 2,\n  \"gamerTag\": \"AreanixAryan\",\n  \"game\": \"BGMI\",\n  \"rankName\": \"Ace Dominator\",\n  \"roleInGame\": \"Assaulter\",\n  \"region\": \"India\",\n  \"age\": 20,\n  \"youtubeUrl\": \"https://youtube.com/@aryanplay\"\n}" },
+						"url": { "raw": "http://localhost:8080/player/onboard", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "onboard"] }
+					}
+				},
+				{
+					"name": "API #11b: Onboard Player 2 Profile (2006pillubhai@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"userId\": 3,\n  \"gamerTag\": \"PilluPro\",\n  \"game\": \"Valorant\",\n  \"rankName\": \"Radiant\",\n  \"roleInGame\": \"Duelist\",\n  \"region\": \"India\",\n  \"age\": 19,\n  \"twitchUrl\": \"https://twitch.tv/pillubhai\"\n}" },
+						"url": { "raw": "http://localhost:8080/player/onboard", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "onboard"] }
+					}
+				},
+				{
+					"name": "API #12: Get Player Profile By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/player/getby/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "getby", "1"] }
+					}
+				},
+				{
+					"name": "API #13: Patch Player Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"rankName\": \"Conqueror\"\n}" },
+						"url": { "raw": "http://localhost:8080/player/patch/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "patch", "1"] }
+					}
+				},
+				{
+					"name": "API #14: Update Availability Status",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/player/1/availability?status=LOOKING_FOR_TEAM", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "1", "availability"], "query": [{ "key": "status", "value": "LOOKING_FOR_TEAM" }] }
+					}
+				},
+				{
+					"name": "API #15: Get Player Tournament History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/player/1/tournament-history", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "1", "tournament-history"] }
+					}
+				},
+				{
+					"name": "API #16: Get Player Achievements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/player/1/achievements", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "1", "achievements"] }
+					}
+				},
+				{
+					"name": "API #17: Get Player Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/player/1/statistics", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "1", "statistics"] }
+					}
+				},
+				{
+					"name": "API #18: Get Live Player Streamers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/player/live?game=BGMI", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["player", "live"], "query": [{ "key": "game", "value": "BGMI" }] }
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Recruiter Workflow (6 APIs)",
+			"item": [
+				{
+					"name": "API #19: Onboard Recruiter Profile (jadhavamitv746@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"userId\": 4,\n  \"organizationName\": \"Amit Gaming Esports\",\n  \"region\": \"India\",\n  \"websiteUrl\": \"https://amitgamingesports.com\"\n}" },
+						"url": { "raw": "http://localhost:8080/recruiter/onboard", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["recruiter", "onboard"] }
+					}
+				},
+				{
+					"name": "API #20: Search Candidates With Filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/recruiter/search?game=BGMI&region=India&roleInGame=Assaulter", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["recruiter", "search"], "query": [{ "key": "game", "value": "BGMI" }, { "key": "region", "value": "India" }, { "key": "roleInGame", "value": "Assaulter" }] }
+					}
+				},
+				{
+					"name": "API #21: Shortlist Player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/recruiter/1/shortlist/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["recruiter", "1", "shortlist", "1"] }
+					}
+				},
+				{
+					"name": "API #22: Send Team Recruitment Invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/recruiter/1/invite/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["recruiter", "1", "invite", "1"] }
+					}
+				},
+				{
+					"name": "API #23: View Recruiter Shortlist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/recruiter/1/shortlist", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["recruiter", "1", "shortlist"] }
+					}
+				},
+				{
+					"name": "API #24: View Sent Invites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/recruiter/1/invites", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["recruiter", "1", "invites"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Organizer Workflow (17 APIs)",
+			"item": [
+				{
+					"name": "API #25: Onboard Organizer Profile (pilankarshreyash53@gmail.com)",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"userId\": 5,\n  \"phoneNumber\": \"+919876543210\",\n  \"youtubeChannelUrl\": \"https://youtube.com/@shreyasheshports\"\n}" },
+						"url": { "raw": "http://localhost:8080/organizer/onboard", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["organizer", "onboard"] }
+					}
+				},
+				{
+					"name": "API #26: Send Organizer Email OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/organizer/1/send-otp", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["organizer", "1", "send-otp"] }
+					}
+				},
+				{
+					"name": "API #27: Verify Organizer Email OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/organizer/1/verify-otp?otp=123456", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["organizer", "1", "verify-otp"], "query": [{ "key": "otp", "value": "123456" }] }
+					}
+				},
+				{
+					"name": "API #28: Get Organizer Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/organizer/1/status", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["organizer", "1", "status"] }
+					}
+				},
+				{
+					"name": "API #29: Get Organizer Profile By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/organizer/getby/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["organizer", "getby", "1"] }
+					}
+				},
+				{
+					"name": "API #30: List Live Tournaments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/live", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "live"] }
+					}
+				},
+				{
+					"name": "API #31: Get Tournaments By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/status/UPCOMING", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "status", "UPCOMING"] }
+					}
+				},
+				{
+					"name": "API #32: Host New Tournament",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"organizerId\": 1,\n  \"name\": \"AREANIX India Championship 2026\",\n  \"game\": \"BGMI\",\n  \"region\": \"India\",\n  \"format\": \"Squad Battle Royale\",\n  \"prizePool\": 100000.0,\n  \"streamLink\": \"https://youtube.com/live/shreyash-stream\",\n  \"rules\": \"No emulator players, 4v4 custom room mode.\"\n}" },
+						"url": { "raw": "http://localhost:8080/tournament/create", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "create"] }
+					}
+				},
+				{
+					"name": "API #33: Get Tournament Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/detail", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "detail"] }
+					}
+				},
+				{
+					"name": "API #34: Release Room Credentials",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/release-room?roomId=887766&roomPassword=shreyashwin", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "release-room"], "query": [{ "key": "roomId", "value": "887766" }, { "key": "roomPassword", "value": "shreyashwin" }] }
+					}
+				},
+				{
+					"name": "API #35: Register Player For Tournament",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/register?playerId=1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "register"], "query": [{ "key": "playerId", "value": "1" }] }
+					}
+				},
+				{
+					"name": "API #36: Approve Player Registration",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/registration/1/approve", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "registration", "1", "approve"] }
+					}
+				},
+				{
+					"name": "API #37: Reject Player Registration",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/registration/1/reject", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "registration", "1", "reject"] }
+					}
+				},
+				{
+					"name": "API #38: Schedule Match",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/schedule-match?round=1&teamAId=1&teamBId=2&scheduledTime=2026-08-15T18:00:00Z", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "schedule-match"], "query": [{ "key": "round", "value": "1" }, { "key": "teamAId", "value": "1" }, { "key": "teamBId", "value": "2" }, { "key": "scheduledTime", "value": "2026-08-15T18:00:00Z" }] }
+					}
+				},
+				{
+					"name": "API #39: Enter Winner Placement & Award XP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/enter-result?playerId=1&placement=1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "enter-result"], "query": [{ "key": "playerId", "value": "1" }, { "key": "placement", "value": "1" }] }
+					}
+				},
+				{
+					"name": "API #40: Complete Tournament",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/complete", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "complete"] }
+					}
+				},
+				{
+					"name": "API #41: Get Live Tournament Standings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/tournament/1/leaderboard", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["tournament", "1", "leaderboard"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Teams, Social & Leaderboards (17 APIs)",
+			"item": [
+				{
+					"name": "API #42: Get Global XP Leaderboard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/leaderboard/xp?game=BGMI&mode=solo&topN=50", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["leaderboard", "xp"], "query": [{ "key": "game", "value": "BGMI" }, { "key": "mode", "value": "solo" }, { "key": "topN", "value": "50" }] }
+					}
+				},
+				{
+					"name": "API #43: Get My XP Rank Position",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/leaderboard/xp/rank/1?game=BGMI&mode=solo", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["leaderboard", "xp", "rank", "1"], "query": [{ "key": "game", "value": "BGMI" }, { "key": "mode", "value": "solo" }] }
+					}
+				},
+				{
+					"name": "API #44: Create Esports Team",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"name\": \"GodLike Esports\",\n  \"tag\": \"GOD\",\n  \"game\": \"BGMI\"\n}" },
+						"url": { "raw": "http://localhost:8080/team/create", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "create"] }
+					}
+				},
+				{
+					"name": "API #45: Join Team As Manager",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/team/1/join-as-manager/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "1", "join-as-manager", "2"] }
+					}
+				},
+				{
+					"name": "API #46: Add Roster Member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/team/1/addmember/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "1", "addmember", "1"] }
+					}
+				},
+				{
+					"name": "API #47: Remove Roster Member",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/team/1/removemember/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "1", "removemember", "1"] }
+					}
+				},
+				{
+					"name": "API #48: Get Team Roster",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/team/1/roster", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "1", "roster"] }
+					}
+				},
+				{
+					"name": "API #49: Get Teams Managed By User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/team/managed-by/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "managed-by", "2"] }
+					}
+				},
+				{
+					"name": "API #50: Search Esports Teams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/team/search?query=GodLike", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["team", "search"], "query": [{ "key": "query", "value": "GodLike" }] }
+					}
+				},
+				{
+					"name": "API #51: Create Community Hub",
+					"request": {
+						"method": "POST",
+						"header": [{ "key": "Content-Type", "value": "application/json" }],
+						"body": { "mode": "raw", "raw": "{\n  \"name\": \"BGMI India Official Hub\",\n  \"description\": \"Official community for BGMI competitive players.\",\n  \"game\": \"BGMI\"\n}" },
+						"url": { "raw": "http://localhost:8080/community/create", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["community", "create"] }
+					}
+				},
+				{
+					"name": "API #52: Search Communities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/community/search?query=BGMI", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["community", "search"], "query": [{ "key": "query", "value": "BGMI" }] }
+					}
+				},
+				{
+					"name": "API #53: Join Community Hub",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/community/1/join/2", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["community", "1", "join", "2"] }
+					}
+				},
+				{
+					"name": "API #54: Get Community Members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/community/1/members", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["community", "1", "members"] }
+					}
+				},
+				{
+					"name": "API #55: Send Friend Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/friend/request/2/3", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["friend", "request", "2", "3"] }
+					}
+				},
+				{
+					"name": "API #56: Accept Friend Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/friend/accept/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["friend", "accept", "1"] }
+					}
+				},
+				{
+					"name": "API #57: Block Friend",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/friend/block/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["friend", "block", "1"] }
+					}
+				},
+				{
+					"name": "API #58: Get Friends List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/friend/2/list", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["friend", "2", "list"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Admin Governance (8 APIs)",
+			"item": [
+				{
+					"name": "API #59: Get Pending Organizers Queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/organizers/pending", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "organizers", "pending"] }
+					}
+				},
+				{
+					"name": "API #60: Approve Organizer Account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/organizers/1/approve", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "organizers", "1", "approve"] }
+					}
+				},
+				{
+					"name": "API #61: Reject Organizer Account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/organizers/1/reject", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "organizers", "1", "reject"] }
+					}
+				},
+				{
+					"name": "API #62: Admin Search Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/users/search?query=pilankararyan148@gmail.com", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "users", "search"], "query": [{ "key": "query", "value": "pilankararyan148@gmail.com" }] }
+					}
+				},
+				{
+					"name": "API #63: Suspend Cheater User Account",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/users/1/suspend", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "users", "1", "suspend"] }
+					}
+				},
+				{
+					"name": "API #64: Get Flagged Tournaments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/tournaments/flagged", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "tournaments", "flagged"] }
+					}
+				},
+				{
+					"name": "API #65: Get Player Disputes Queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/disputes", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "disputes"] }
+					}
+				},
+				{
+					"name": "API #66: Get Platform System Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/admin-login/stats", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["admin-login", "stats"] }
+					}
+				}
+			]
+		}
+	]
+}
