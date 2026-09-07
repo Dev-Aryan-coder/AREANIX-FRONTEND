@@ -43,7 +43,7 @@ const OrganizerDisputesTab = ({ disputes, onResolveDispute }) => {
                   color: d.status === 'OPEN' ? '#ef4444' : '#10b981',
                   border: `1px solid ${d.status === 'OPEN' ? '#ef4444' : '#10b981'}`
                 }}>
-                  {d.status} DISPUTE
+                  {d.status === 'REVIEWED' ? 'RESOLVED' : d.status} DISPUTE
                 </span>
                 <span style={{ color: '#94a3b8', fontSize: '12px' }}>
                   Tournament #{d.tournamentId} &bull; Raised by User #{d.raisedBy}
