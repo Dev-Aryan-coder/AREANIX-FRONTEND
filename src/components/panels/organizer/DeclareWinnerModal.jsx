@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
   const [participants, setParticipants] = useState([]);
+  const [playersMap, setPlayersMap] = useState({});
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [rank1, setRank1] = useState('');
@@ -15,22 +16,48 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
     setLoading(true);
     setError('');
 
-    axios.get(`http://localhost:8080/tournament/${tournament.id}/registrations`)
-      .then((res) => {
-        const list = Array.isArray(res.data) ? res.data : [];
-        setParticipants(list);
-        if (list.length > 0) {
-          const firstVal = list[0].playerId ? `player_${list[0].playerId}` : (list[0].teamId ? `team_${list[0].teamId}` : '');
-          setRank1(firstVal);
-        }
-      })
-      .catch(() => {
-        setParticipants([]);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    Promise.allSettled([
+      axios.get(`http://localhost:8080/tournament/${tournament.id}/registrations`),
+      axios.get('http://localhost:8080/player/all'),
+      axios.get('http://localhost:8080/team/all')
+    ]).then(([regsRes, playersRes, teamsRes]) => {
+      // Build players dictionary
+      const pMap = {};
+      if (playersRes.status === 'fulfilled' && Array.isArray(playersRes.value.data)) {
+        playersRes.value.data.forEach((p) => {
+          const key = p.id || p.userId;
+          pMap[key] = p;
+        });
+      }
+      setPlayersMap(pMap);
+
+      // Process registrations
+      const list = regsRes.status === 'fulfilled' && Array.isArray(regsRes.value.data) ? regsRes.value.data : [];
+      setParticipants(list);
+
+      if (list.length > 0) {
+        const firstVal = list[0].playerId ? `player_${list[0].playerId}` : (list[0].teamId ? `team_${list[0].teamId}` : '');
+        setRank1(firstVal);
+      }
+    }).catch(() => {
+      setParticipants([]);
+    }).finally(() => {
+      setLoading(false);
+    });
   }, [tournament]);
+
+  const getParticipantLabel = (p) => {
+    if (p.playerId) {
+      const pl = playersMap[p.playerId];
+      const name = pl?.gamerTag || pl?.user?.fullname || pl?.user?.username || `Player #${p.playerId}`;
+      const rank = pl?.rankName ? ` (${pl.rankName})` : '';
+      return `${name}${rank} - Solo Registration`;
+    }
+    if (p.teamId) {
+      return `Squad Team #${p.teamId} - 4v4 Roster`;
+    }
+    return `Applicant #${p.id}`;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,7 +103,7 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
 
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(10px)', zIndex: 999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-      <div style={{ background: '#1c1c1c', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '24px', padding: '36px', maxWidth: '520px', width: '100%', boxShadow: '0 25px 60px rgba(0,0,0,0.9)' }}>
+      <div style={{ background: '#1c1c1c', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: '24px', padding: '36px', maxWidth: '540px', width: '100%', boxShadow: '0 25px 60px rgba(0,0,0,0.9)' }}>
         
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -85,7 +112,7 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
               🏆 Declare Tournament Winners
             </h3>
             <p style={{ margin: '4px 0 0 0', color: '#10b981', fontSize: '13px' }}>
-              {tournament.name} &bull; Prize Pool: ₹{tournament.prizePool?.toLocaleString()}
+              {tournament.name || tournament.title} &bull; Prize Pool: ₹{tournament.prizePool?.toLocaleString()}
             </p>
           </div>
           <button type="button" onClick={onClose} style={{ background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '20px', cursor: 'pointer' }}>✕</button>
@@ -99,10 +126,26 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: '30px', color: '#94a3b8' }}>Loading registered participants...</div>
+        ) : participants.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '24px', background: '#141414', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <p style={{ color: '#f59e0b', fontSize: '14px', margin: '0 0 16px 0', fontWeight: '500' }}>
+              No registered players found for this tournament yet.
+            </p>
+            <p style={{ color: '#94a3b8', fontSize: '13px', margin: '0 0 20px 0' }}>
+              Players can join via <strong>"Join Live Match → Got It, Launch Game"</strong> or register from Upcoming Tournaments.
+            </p>
+            <button
+              type="button"
+              onClick={onClose}
+              style={{ padding: '10px 20px', background: '#334155', border: 'none', color: '#fff', borderRadius: '10px', fontWeight: '600', cursor: 'pointer' }}
+            >
+              Close
+            </button>
+          </div>
         ) : (
           <form onSubmit={handleSubmit}>
-            <p style={{ color: '#cbd5e1', fontSize: '13px', margin: '0 0 18px 0' }}>
-              Select the final standings. The <strong>1st Place Champion</strong> receives <strong>500 XP</strong> and the official <strong>Tournament Champion</strong> achievement badge! All other participants receive <strong>100 XP</strong>.
+            <p style={{ color: '#cbd5e1', fontSize: '13px', margin: '0 0 18px 0', lineHeight: '1.5' }}>
+              Select the final standings from registered participants. The <strong>1st Place Champion</strong> receives <strong>500 XP</strong> & Champion Badge! All other participants receive <strong>100 XP</strong>.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
@@ -120,8 +163,7 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                   <option value="">-- Select 1st Place Winner --</option>
                   {participants.map((p) => {
                     const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    const label = p.player?.gamerTag || p.team?.name || (p.playerId ? `Player #${p.playerId}` : `Squad Team #${p.teamId}`);
-                    return <option key={p.id} value={val}>{label} ({p.teamId ? 'Squad' : 'Solo'})</option>;
+                    return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
                   })}
                 </select>
               </div>
@@ -139,8 +181,7 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                   <option value="">-- Select 2nd Place (Optional) --</option>
                   {participants.filter(p => (p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`) !== rank1).map((p) => {
                     const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    const label = p.player?.gamerTag || p.team?.name || (p.playerId ? `Player #${p.playerId}` : `Squad Team #${p.teamId}`);
-                    return <option key={p.id} value={val}>{label}</option>;
+                    return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
                   })}
                 </select>
               </div>
@@ -161,8 +202,7 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                     return val !== rank1 && val !== rank2;
                   }).map((p) => {
                     const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    const label = p.player?.gamerTag || p.team?.name || (p.playerId ? `Player #${p.playerId}` : `Squad Team #${p.teamId}`);
-                    return <option key={p.id} value={val}>{label}</option>;
+                    return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
                   })}
                 </select>
               </div>
@@ -183,7 +223,7 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                 className="action-btn-success"
                 style={{ padding: '12px 24px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', border: 'none', color: '#fff', fontWeight: '700', borderRadius: '10px', cursor: 'pointer' }}
               >
-                {submitting ? 'Awarding XP...' : '🏁 Confirm Winner & Complete'}
+                {submitting ? 'Awarding XP...' : '🏁 Confirm Winner & Award XP'}
               </button>
             </div>
           </form>
