@@ -10,6 +10,7 @@ import SocialLayerTab from './player/SocialLayerTab';
 import PlayerProfileModal from './player/PlayerProfileModal';
 import RecruiterTab from './player/RecruiterTab';
 import RaiseDisputeModal from './player/RaiseDisputeModal';
+import LiveMatchRoomModal from './player/LiveMatchRoomModal';
 
 const PlayerPanel = ({ userProfile }) => {
   const userId = userProfile?.userId || userProfile?.id;
@@ -37,6 +38,7 @@ const PlayerPanel = ({ userProfile }) => {
   const [tournamentActionMsg, setTournamentActionMsg] = useState('');
   const [playerTeamInfo, setPlayerTeamInfo] = useState({ hasTeam: false, team: null, membership: null, roster: [] });
   const [selectedTournamentForDispute, setSelectedTournamentForDispute] = useState(null);
+  const [selectedLiveTournament, setSelectedLiveTournament] = useState(null);
 
   // Tab 4: Social Layer & Profile Modal States
   const [socialSubTab, setSocialSubTab] = useState('directory');
@@ -671,6 +673,7 @@ const PlayerPanel = ({ userProfile }) => {
               registeringId={registeringId}
               tournamentActionMsg={tournamentActionMsg}
               onRaiseDispute={(t) => setSelectedTournamentForDispute(t)}
+              onJoinLiveMatch={(t) => setSelectedLiveTournament(t)}
             />
           )}
 
@@ -737,6 +740,16 @@ const PlayerPanel = ({ userProfile }) => {
         onSuccess={(msg) => {
           setTournamentActionMsg(msg);
           setTimeout(() => setTournamentActionMsg(''), 4000);
+        }}
+      />
+
+      {/* Live Match Lobby & Custom Room Modal */}
+      <LiveMatchRoomModal
+        tournament={selectedLiveTournament}
+        onClose={() => setSelectedLiveTournament(null)}
+        onRaiseDispute={(t) => {
+          setSelectedLiveTournament(null);
+          setSelectedTournamentForDispute(t);
         }}
       />
 

@@ -11,7 +11,8 @@ const TournamentActivityTab = ({
   handleRegisterTournament,
   registeringId,
   tournamentActionMsg,
-  onRaiseDispute
+  onRaiseDispute,
+  onJoinLiveMatch
 }) => {
   return (
     <div style={{ background: '#161a22', border: '1px solid rgba(0, 191, 255, 0.25)', borderRadius: '24px', padding: '36px', boxShadow: '12px 12px 30px rgba(0,0,0,0.85), -6px -6px 20px rgba(255,255,255,0.03)' }}>
@@ -275,6 +276,7 @@ const TournamentActivityTab = ({
                   <p style={{ color: '#94a3b8', fontSize: '13px', margin: '0 0 12px 0' }}>Room ID: {t.roomId || 'Locked'} | Room Pass: {t.roomPassword ? '••••' : 'Locked'}</p>
                   <button
                     type="button"
+                    onClick={() => onJoinLiveMatch && onJoinLiveMatch(t)}
                     style={{ width: '100%', padding: '10px', borderRadius: '10px', background: '#10b981', border: 'none', color: '#fff', fontWeight: '600', cursor: 'pointer', fontSize: '13px', fontFamily: "'Poppins', sans-serif" }}
                   >
                     Join Live Match →
