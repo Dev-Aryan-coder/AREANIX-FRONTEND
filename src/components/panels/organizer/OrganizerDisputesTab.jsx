@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrganizerDisputesTab = ({ disputes }) => {
+const OrganizerDisputesTab = ({ disputes, onResolveDispute }) => {
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
@@ -50,12 +50,25 @@ const OrganizerDisputesTab = ({ disputes }) => {
                 </span>
               </div>
 
-              <p style={{ color: '#ffffff', fontSize: '15px', margin: '0 0 10px 0', lineHeight: '1.5' }}>
+              <p style={{ color: '#ffffff', fontSize: '15px', margin: '0 0 14px 0', lineHeight: '1.5' }}>
                 "{d.description}"
               </p>
 
-              <div style={{ color: '#64748b', fontSize: '12px' }}>
-                Logged at: {d.createdAt ? new Date(d.createdAt).toLocaleString() : 'Recent'}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                <div style={{ color: '#64748b', fontSize: '12px' }}>
+                  Logged at: {d.createdAt ? new Date(d.createdAt).toLocaleString() : 'Recent'}
+                </div>
+
+                {d.status === 'OPEN' && onResolveDispute && (
+                  <button
+                    type="button"
+                    onClick={() => onResolveDispute(d.id)}
+                    className="action-btn-success"
+                    style={{ padding: '6px 16px', fontSize: '12px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', border: 'none', color: '#fff', borderRadius: '8px', cursor: 'pointer', fontWeight: '600' }}
+                  >
+                    ✅ Mark Resolved
+                  </button>
+                )}
               </div>
             </div>
           ))}

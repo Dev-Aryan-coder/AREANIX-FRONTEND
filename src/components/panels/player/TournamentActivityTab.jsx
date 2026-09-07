@@ -10,7 +10,8 @@ const TournamentActivityTab = ({
   playerTeamInfo = null,
   handleRegisterTournament,
   registeringId,
-  tournamentActionMsg
+  tournamentActionMsg,
+  onRaiseDispute
 }) => {
   return (
     <div style={{ background: '#161a22', border: '1px solid rgba(0, 191, 255, 0.25)', borderRadius: '24px', padding: '36px', boxShadow: '12px 12px 30px rgba(0,0,0,0.85), -6px -6px 20px rgba(255,255,255,0.03)' }}>
@@ -309,17 +310,35 @@ const TournamentActivityTab = ({
                           Host: <strong style={{ color: '#00bfff' }}>{t.hostName || 'Verified Host'}</strong> &bull; Mode: Squad (4v4)
                         </span>
                       </div>
-                      <span style={{
-                        padding: '4px 14px',
-                        borderRadius: '20px',
-                        fontSize: '12px',
-                        fontWeight: '700',
-                        background: isApproved ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)',
-                        color: isApproved ? '#10b981' : '#f59e0b',
-                        border: isApproved ? '1px solid #10b981' : '1px solid #f59e0b'
-                      }}>
-                        {isApproved ? '✓ SQUAD APPROVED' : '⏳ PENDING REVIEW'}
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{
+                          padding: '4px 14px',
+                          borderRadius: '20px',
+                          fontSize: '12px',
+                          fontWeight: '700',
+                          background: isApproved ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+                          color: isApproved ? '#10b981' : '#f59e0b',
+                          border: isApproved ? '1px solid #10b981' : '1px solid #f59e0b'
+                        }}>
+                          {isApproved ? '✓ SQUAD APPROVED' : '⏳ PENDING REVIEW'}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => onRaiseDispute && onRaiseDispute({ id: t.tournamentId, name: t.tournamentName })}
+                          style={{
+                            background: 'rgba(239, 68, 68, 0.1)',
+                            border: '1px solid rgba(239, 68, 68, 0.3)',
+                            color: '#ef4444',
+                            padding: '6px 12px',
+                            borderRadius: '8px',
+                            fontSize: '11px',
+                            fontWeight: '600',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          ⚠️ Dispute
+                        </button>
+                      </div>
                     </div>
                   );
                 })}
@@ -354,17 +373,35 @@ const TournamentActivityTab = ({
                         </span>
                         <span style={{ color: '#94a3b8', fontSize: '12px' }}>Player ID: {reg.playerId}</span>
                       </div>
-                      <span style={{
-                        padding: '4px 14px',
-                        borderRadius: '20px',
-                        fontSize: '12px',
-                        fontWeight: '700',
-                        background: isApproved ? 'rgba(16, 185, 129, 0.15)' : isRejected ? 'rgba(239, 68, 68, 0.15)' : 'rgba(245, 158, 11, 0.15)',
-                        color: isApproved ? '#10b981' : isRejected ? '#ef4444' : '#f59e0b',
-                        border: isApproved ? '1px solid #10b981' : isRejected ? '1px solid #ef4444' : '1px solid #f59e0b'
-                      }}>
-                        {isApproved ? '✓ APPROVED' : isRejected ? '✕ REJECTED' : '⏳ PENDING APPROVAL'}
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{
+                          padding: '4px 14px',
+                          borderRadius: '20px',
+                          fontSize: '12px',
+                          fontWeight: '700',
+                          background: isApproved ? 'rgba(16, 185, 129, 0.15)' : isRejected ? 'rgba(239, 68, 68, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+                          color: isApproved ? '#10b981' : isRejected ? '#ef4444' : '#f59e0b',
+                          border: isApproved ? '1px solid #10b981' : isRejected ? '1px solid #ef4444' : '1px solid #f59e0b'
+                        }}>
+                          {isApproved ? '✓ APPROVED' : isRejected ? '✕ REJECTED' : '⏳ PENDING APPROVAL'}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => onRaiseDispute && onRaiseDispute({ id: reg.tournamentId, name: `Tournament #${reg.tournamentId}` })}
+                          style={{
+                            background: 'rgba(239, 68, 68, 0.1)',
+                            border: '1px solid rgba(239, 68, 68, 0.3)',
+                            color: '#ef4444',
+                            padding: '6px 12px',
+                            borderRadius: '8px',
+                            fontSize: '11px',
+                            fontWeight: '600',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          ⚠️ Dispute
+                        </button>
+                      </div>
                     </div>
                   );
                 })}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TeamStatusTab = ({ playerTeamInfo, activeRecruiters = [], userId }) => {
+const TeamStatusTab = ({ playerTeamInfo, activeRecruiters = [], userId, onRaiseDispute }) => {
   // Dynamically resolve recruiter manager and organization details
   const rec = activeRecruiters.find(
     (r) => Number(r.id) === Number(playerTeamInfo?.team?.managerId) || Number(r.userId) === Number(playerTeamInfo?.team?.managerId)
@@ -201,6 +201,30 @@ const TeamStatusTab = ({ playerTeamInfo, activeRecruiters = [], userId }) => {
                         Match room credentials will be posted here by the host before start time.
                       </div>
                     )}
+
+                    {/* Dispute Action Button */}
+                    <div style={{ marginTop: '14px', display: 'flex', justifyContent: 'flex-end' }}>
+                      <button
+                        type="button"
+                        onClick={() => onRaiseDispute && onRaiseDispute({ id: t.tournamentId, name: t.tournamentName })}
+                        style={{
+                          background: 'rgba(239, 68, 68, 0.1)',
+                          border: '1px solid rgba(239, 68, 68, 0.3)',
+                          color: '#ef4444',
+                          padding: '6px 14px',
+                          borderRadius: '8px',
+                          fontSize: '11px',
+                          fontWeight: '600',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        ⚠️ Raise Dispute
+                      </button>
+                    </div>
                   </div>
                 </div>
               );

@@ -232,6 +232,21 @@ const OrganizerPanel = ({ userProfile }) => {
   };
 
   // -----------------------------------------------------------------
+  // Handlers: Resolve Dispute
+  // -----------------------------------------------------------------
+  const handleResolveDispute = async (disputeId) => {
+    try {
+      await axios.patch(`http://localhost:8080/organizer/dispute/${disputeId}/resolve`);
+      setSuccessMsg('Dispute marked as RESOLVED!');
+      fetchAllOrganizerData();
+      setTimeout(() => setSuccessMsg(''), 4000);
+    } catch (err) {
+      setErrorMsg('Failed to resolve dispute.');
+      setTimeout(() => setErrorMsg(''), 4000);
+    }
+  };
+
+  // -----------------------------------------------------------------
   // Handlers: Registration Approval & Rejection
   // -----------------------------------------------------------------
   const handleApproveRegistration = async (regId) => {
@@ -452,6 +467,7 @@ const OrganizerPanel = ({ userProfile }) => {
         {activeTab === 'disputes' && (
           <OrganizerDisputesTab
             disputes={disputes}
+            onResolveDispute={handleResolveDispute}
           />
         )}
 

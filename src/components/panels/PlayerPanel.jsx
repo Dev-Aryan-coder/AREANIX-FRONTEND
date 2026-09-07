@@ -9,6 +9,7 @@ import TeamStatusTab from './player/TeamStatusTab';
 import SocialLayerTab from './player/SocialLayerTab';
 import PlayerProfileModal from './player/PlayerProfileModal';
 import RecruiterTab from './player/RecruiterTab';
+import RaiseDisputeModal from './player/RaiseDisputeModal';
 
 const PlayerPanel = ({ userProfile }) => {
   const userId = userProfile?.userId || userProfile?.id;
@@ -35,6 +36,7 @@ const PlayerPanel = ({ userProfile }) => {
   const [registeringId, setRegisteringId] = useState(null);
   const [tournamentActionMsg, setTournamentActionMsg] = useState('');
   const [playerTeamInfo, setPlayerTeamInfo] = useState({ hasTeam: false, team: null, membership: null, roster: [] });
+  const [selectedTournamentForDispute, setSelectedTournamentForDispute] = useState(null);
 
   // Tab 4: Social Layer & Profile Modal States
   const [socialSubTab, setSocialSubTab] = useState('directory');
@@ -668,6 +670,7 @@ const PlayerPanel = ({ userProfile }) => {
               handleRegisterTournament={handleRegisterTournament}
               registeringId={registeringId}
               tournamentActionMsg={tournamentActionMsg}
+              onRaiseDispute={(t) => setSelectedTournamentForDispute(t)}
             />
           )}
 
@@ -677,6 +680,7 @@ const PlayerPanel = ({ userProfile }) => {
               playerTeamInfo={playerTeamInfo}
               activeRecruiters={activeRecruiters}
               userId={userId}
+              onRaiseDispute={(t) => setSelectedTournamentForDispute(t)}
             />
           )}
 
@@ -723,6 +727,17 @@ const PlayerPanel = ({ userProfile }) => {
         modalPlayerXp={modalPlayerXp}
         userId={userId}
         handleSendFriendRequest={handleSendFriendRequest}
+      />
+
+      {/* Raise Dispute Modal */}
+      <RaiseDisputeModal
+        tournament={selectedTournamentForDispute}
+        userId={userId}
+        onClose={() => setSelectedTournamentForDispute(null)}
+        onSuccess={(msg) => {
+          setTournamentActionMsg(msg);
+          setTimeout(() => setTournamentActionMsg(''), 4000);
+        }}
       />
 
     </div>
