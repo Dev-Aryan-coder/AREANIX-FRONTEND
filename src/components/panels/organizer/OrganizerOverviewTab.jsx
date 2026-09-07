@@ -159,11 +159,11 @@ const OrganizerOverviewTab = ({
 
                   {t.status === 'ONGOING' && (
                     <button
-                      onClick={() => onCompleteTournament(t.id)}
+                      onClick={() => onCompleteTournament(t)}
                       className="action-btn-success"
                       style={{ fontSize: '13px', padding: '8px 16px' }}
                     >
-                      🏁 Complete & Award XP
+                      🏁 Complete & Declare Winner
                     </button>
                   )}
 

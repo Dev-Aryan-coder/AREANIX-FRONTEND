@@ -10,6 +10,7 @@ import OrganizerDisputesTab from './organizer/OrganizerDisputesTab';
 import OrganizerVerificationTab from './organizer/OrganizerVerificationTab';
 import CreateTournamentModal from './organizer/CreateTournamentModal';
 import ReleaseRoomModal from './organizer/ReleaseRoomModal';
+import DeclareWinnerModal from './organizer/DeclareWinnerModal';
 
 const OrganizerPanel = ({ userProfile }) => {
   const userId = userProfile?.userId || userProfile?.id || 1;
@@ -33,6 +34,7 @@ const OrganizerPanel = ({ userProfile }) => {
 
   // Create Tournament Modal State
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [selectedTournamentForCompletion, setSelectedTournamentForCompletion] = useState(null);
   const [tournamentForm, setTournamentForm] = useState({
     name: '',
     game: 'BGMI',
@@ -418,7 +420,7 @@ const OrganizerPanel = ({ userProfile }) => {
             onOpenCreateModal={() => setShowCreateModal(true)}
             onSelectTournamentForRoom={(t) => { setSelectedTournamentForRoom(t); setRoomData({ roomId: t.roomId || '', roomPassword: t.roomPassword || '' }); }}
             onStartTournament={handleStartTournament}
-            onCompleteTournament={handleCompleteTournament}
+            onCompleteTournament={(t) => setSelectedTournamentForCompletion(t)}
             onMarkPrizePaid={handleMarkPrizePaid}
             onViewAllTournaments={() => setActiveTab('tournaments')}
           />
@@ -431,7 +433,7 @@ const OrganizerPanel = ({ userProfile }) => {
             onOpenCreateModal={() => setShowCreateModal(true)}
             onSelectTournamentForRoom={(t) => { setSelectedTournamentForRoom(t); setRoomData({ roomId: t.roomId || '', roomPassword: t.roomPassword || '' }); }}
             onStartTournament={handleStartTournament}
-            onCompleteTournament={handleCompleteTournament}
+            onCompleteTournament={(t) => setSelectedTournamentForCompletion(t)}
             onMarkPrizePaid={handleMarkPrizePaid}
           />
         )}
@@ -485,6 +487,17 @@ const OrganizerPanel = ({ userProfile }) => {
         setRoomData={setRoomData}
         onClose={() => setSelectedTournamentForRoom(null)}
         onSubmit={handleReleaseRoom}
+      />
+
+      {/* MODAL: DECLARE WINNERS & COMPLETE */}
+      <DeclareWinnerModal
+        tournament={selectedTournamentForCompletion}
+        onClose={() => setSelectedTournamentForCompletion(null)}
+        onSuccess={(msg) => {
+          setSuccessMsg(msg);
+          fetchAllOrganizerData();
+          setTimeout(() => setSuccessMsg(''), 4000);
+        }}
       />
 
     </div>
