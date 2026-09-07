@@ -4,6 +4,7 @@ const OrganizerTournamentsTab = ({
   tournaments,
   onOpenCreateModal,
   onSelectTournamentForRoom,
+  onStartTournament,
   onCompleteTournament,
   onMarkPrizePaid
 }) => {
@@ -71,13 +72,23 @@ const OrganizerTournamentsTab = ({
               )}
 
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '16px' }}>
+                {t.status === 'UPCOMING' && (
+                  <button
+                    onClick={() => onStartTournament(t.id)}
+                    className="action-btn-success"
+                    style={{ flex: 1, textAlign: 'center', fontSize: '12px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', border: 'none', color: '#fff' }}
+                  >
+                    ▶️ Start Match
+                  </button>
+                )}
+
                 {t.status !== 'COMPLETED' && (
                   <button
                     onClick={() => onSelectTournamentForRoom(t)}
                     className="action-btn-primary"
                     style={{ flex: 1, textAlign: 'center', fontSize: '12px' }}
                   >
-                    🔑 Release Room
+                    🔑 {t.roomId ? 'Update Room' : 'Release Room'}
                   </button>
                 )}
 

@@ -5,6 +5,7 @@ const OrganizerOverviewTab = ({
   recentTourneys,
   onOpenCreateModal,
   onSelectTournamentForRoom,
+  onStartTournament,
   onCompleteTournament,
   onMarkPrizePaid,
   onViewAllTournaments
@@ -136,6 +137,16 @@ const OrganizerOverviewTab = ({
                 </div>
 
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+                  {t.status === 'UPCOMING' && (
+                    <button
+                      onClick={() => onStartTournament(t.id)}
+                      className="action-btn-success"
+                      style={{ fontSize: '13px', padding: '8px 16px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', border: 'none', color: '#fff' }}
+                    >
+                      ▶️ Start Match (Go Live)
+                    </button>
+                  )}
+
                   {t.status !== 'COMPLETED' && (
                     <button
                       onClick={() => onSelectTournamentForRoom(t)}

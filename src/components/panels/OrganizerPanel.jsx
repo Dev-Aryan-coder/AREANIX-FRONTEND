@@ -198,6 +198,21 @@ const OrganizerPanel = ({ userProfile }) => {
   };
 
   // -----------------------------------------------------------------
+  // Handlers: Start Tournament (Go Live -> ONGOING)
+  // -----------------------------------------------------------------
+  const handleStartTournament = async (tournamentId) => {
+    try {
+      await axios.patch(`http://localhost:8080/tournament/${tournamentId}/start`);
+      setSuccessMsg('Tournament started! Match is now LIVE (ONGOING).');
+      fetchAllOrganizerData();
+      setTimeout(() => setSuccessMsg(''), 4000);
+    } catch (err) {
+      setErrorMsg('Failed to start tournament.');
+      setTimeout(() => setErrorMsg(''), 4000);
+    }
+  };
+
+  // -----------------------------------------------------------------
   // Handlers: Complete Tournament & Award XP
   // -----------------------------------------------------------------
   const handleCompleteTournament = async (tournamentId) => {
@@ -402,6 +417,7 @@ const OrganizerPanel = ({ userProfile }) => {
             recentTourneys={recentTourneys}
             onOpenCreateModal={() => setShowCreateModal(true)}
             onSelectTournamentForRoom={(t) => { setSelectedTournamentForRoom(t); setRoomData({ roomId: t.roomId || '', roomPassword: t.roomPassword || '' }); }}
+            onStartTournament={handleStartTournament}
             onCompleteTournament={handleCompleteTournament}
             onMarkPrizePaid={handleMarkPrizePaid}
             onViewAllTournaments={() => setActiveTab('tournaments')}
@@ -414,6 +430,7 @@ const OrganizerPanel = ({ userProfile }) => {
             tournaments={recentTourneys}
             onOpenCreateModal={() => setShowCreateModal(true)}
             onSelectTournamentForRoom={(t) => { setSelectedTournamentForRoom(t); setRoomData({ roomId: t.roomId || '', roomPassword: t.roomPassword || '' }); }}
+            onStartTournament={handleStartTournament}
             onCompleteTournament={handleCompleteTournament}
             onMarkPrizePaid={handleMarkPrizePaid}
           />
