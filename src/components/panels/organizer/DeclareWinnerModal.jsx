@@ -126,26 +126,10 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
 
         {loading ? (
           <div style={{ textAlign: 'center', padding: '30px', color: '#94a3b8' }}>Loading registered participants...</div>
-        ) : participants.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '24px', background: '#141414', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <p style={{ color: '#f59e0b', fontSize: '14px', margin: '0 0 16px 0', fontWeight: '500' }}>
-              No registered players found for this tournament yet.
-            </p>
-            <p style={{ color: '#94a3b8', fontSize: '13px', margin: '0 0 20px 0' }}>
-              Players can join via <strong>"Join Live Match → Got It, Launch Game"</strong> or register from Upcoming Tournaments.
-            </p>
-            <button
-              type="button"
-              onClick={onClose}
-              style={{ padding: '10px 20px', background: '#334155', border: 'none', color: '#fff', borderRadius: '10px', fontWeight: '600', cursor: 'pointer' }}
-            >
-              Close
-            </button>
-          </div>
         ) : (
           <form onSubmit={handleSubmit}>
             <p style={{ color: '#cbd5e1', fontSize: '13px', margin: '0 0 18px 0', lineHeight: '1.5' }}>
-              Select the final standings from registered participants. The <strong>1st Place Champion</strong> receives <strong>500 XP</strong> & Champion Badge! All other participants receive <strong>100 XP</strong>.
+              Select the final standings from tournament participants. The <strong>1st Place Champion</strong> receives <strong>500 XP</strong> & Champion Badge! All other participants receive <strong>100 XP</strong>.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
@@ -161,10 +145,18 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                   style={{ width: '100%', padding: '12px 16px', background: '#141414', border: '1px solid #10b981', borderRadius: '10px', color: '#fff', fontSize: '14px', outline: 'none' }}
                 >
                   <option value="">-- Select 1st Place Winner --</option>
-                  {participants.map((p) => {
-                    const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
-                  })}
+                  {participants.length > 0 ? (
+                    participants.map((p) => {
+                      const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
+                      return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
+                    })
+                  ) : (
+                    Object.values(playersMap).map((pl) => (
+                      <option key={pl.id || pl.userId} value={`player_${pl.id || pl.userId}`}>
+                        {pl.gamerTag || pl.user?.fullname || `Player #${pl.id || pl.userId}`} ({pl.rankName || 'Competitor'}) - Solo
+                      </option>
+                    ))
+                  )}
                 </select>
               </div>
 
@@ -179,10 +171,18 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                   style={{ width: '100%', padding: '12px 16px', background: '#141414', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px', color: '#fff', fontSize: '14px', outline: 'none' }}
                 >
                   <option value="">-- Select 2nd Place (Optional) --</option>
-                  {participants.filter(p => (p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`) !== rank1).map((p) => {
-                    const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
-                  })}
+                  {participants.length > 0 ? (
+                    participants.filter(p => (p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`) !== rank1).map((p) => {
+                      const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
+                      return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
+                    })
+                  ) : (
+                    Object.values(playersMap).filter(pl => `player_${pl.id || pl.userId}` !== rank1).map((pl) => (
+                      <option key={pl.id || pl.userId} value={`player_${pl.id || pl.userId}`}>
+                        {pl.gamerTag || pl.user?.fullname || `Player #${pl.id || pl.userId}`}
+                      </option>
+                    ))
+                  )}
                 </select>
               </div>
 
@@ -197,13 +197,24 @@ const DeclareWinnerModal = ({ tournament, onClose, onSuccess }) => {
                   style={{ width: '100%', padding: '12px 16px', background: '#141414', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '10px', color: '#fff', fontSize: '14px', outline: 'none' }}
                 >
                   <option value="">-- Select 3rd Place (Optional) --</option>
-                  {participants.filter(p => {
-                    const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    return val !== rank1 && val !== rank2;
-                  }).map((p) => {
-                    const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
-                    return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
-                  })}
+                  {participants.length > 0 ? (
+                    participants.filter(p => {
+                      const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
+                      return val !== rank1 && val !== rank2;
+                    }).map((p) => {
+                      const val = p.playerId ? `player_${p.playerId}` : `team_${p.teamId}`;
+                      return <option key={p.id} value={val}>{getParticipantLabel(p)}</option>;
+                    })
+                  ) : (
+                    Object.values(playersMap).filter(pl => {
+                      const val = `player_${pl.id || pl.userId}`;
+                      return val !== rank1 && val !== rank2;
+                    }).map((pl) => (
+                      <option key={pl.id || pl.userId} value={`player_${pl.id || pl.userId}`}>
+                        {pl.gamerTag || pl.user?.fullname || `Player #${pl.id || pl.userId}`}
+                      </option>
+                    ))
+                  )}
                 </select>
               </div>
             </div>
