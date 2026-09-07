@@ -71,16 +71,16 @@ const OrganizerRegistrationsTab = ({
                   <button
                     onClick={() => onApproveRegistration(reg.id)}
                     className="action-btn-success"
-                    style={{ flex: 1, textAlign: 'center' }}
+                    style={{ flex: 1, textAlign: 'center', padding: '10px 14px', fontSize: '13px', fontWeight: '600' }}
                   >
-                    ✓ Approve
+                    ✓ Approve & Allow to Play
                   </button>
                   <button
                     onClick={() => onRejectRegistration(reg.id)}
                     className="action-btn-danger"
-                    style={{ flex: 1, textAlign: 'center' }}
+                    style={{ flex: 1, textAlign: 'center', padding: '10px 14px', fontSize: '13px', fontWeight: '600' }}
                   >
-                    ✕ Reject
+                    ✕ Reject Application
                   </button>
                 </div>
               </div>

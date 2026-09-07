@@ -751,6 +751,10 @@ const PlayerPanel = ({ userProfile }) => {
           setSelectedLiveTournament(null);
           setSelectedTournamentForDispute(t);
         }}
+        onLaunchGame={(t) => {
+          handleRegisterTournament(t.id);
+          setTournamentActionMsg(`🎮 Match Launched for "${t.name || t.title}"! Registered & application sent to host's Pending Registrations.`);
+        }}
       />
 
     </div>

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-const LiveMatchRoomModal = ({ tournament, onClose, onRaiseDispute }) => {
+const LiveMatchRoomModal = ({ tournament, onClose, onRaiseDispute, onLaunchGame }) => {
   const [copiedId, setCopiedId] = useState(false);
   const [copiedPass, setCopiedPass] = useState(false);
   const [showPass, setShowPass] = useState(true);
+  const [isLaunching, setIsLaunching] = useState(false);
 
   if (!tournament) return null;
 
@@ -17,6 +18,17 @@ const LiveMatchRoomModal = ({ tournament, onClose, onRaiseDispute }) => {
       setCopiedPass(true);
       setTimeout(() => setCopiedPass(false), 2000);
     }
+  };
+
+  const handleLaunch = () => {
+    setIsLaunching(true);
+    if (onLaunchGame) {
+      onLaunchGame(tournament);
+    }
+    setTimeout(() => {
+      setIsLaunching(false);
+      onClose();
+    }, 1000);
   };
 
   const hostName = tournament.organizer?.organizationName || tournament.organizer?.user?.fullname || (tournament.organizerId ? `Organizer #${tournament.organizerId}` : 'Verified Esports Host');
@@ -70,7 +82,7 @@ const LiveMatchRoomModal = ({ tournament, onClose, onRaiseDispute }) => {
               <div>
                 <span style={{ color: '#94a3b8', fontSize: '11px', display: 'block' }}>ROOM PASSWORD</span>
                 <strong style={{ color: '#ffffff', fontSize: '16px', letterSpacing: '1px' }}>
-                  {showPass ? (tournament.roomPassword || '41414') : '••••••'}
+                  {showPass ? (tournament.roomPassword || '741741') : '••••••'}
                 </strong>
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
@@ -83,7 +95,7 @@ const LiveMatchRoomModal = ({ tournament, onClose, onRaiseDispute }) => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleCopy(tournament.roomPassword || '41414', 'pass')}
+                  onClick={() => handleCopy(tournament.roomPassword || '741741', 'pass')}
                   style={{ background: copiedPass ? '#10b981' : 'rgba(0, 191, 255, 0.15)', border: copiedPass ? 'none' : '1px solid rgba(0, 191, 255, 0.4)', color: copiedPass ? '#fff' : '#00bfff', padding: '6px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s ease' }}
                 >
                   {copiedPass ? '✓ Copied!' : '📋 Copy Pass'}
@@ -129,11 +141,15 @@ const LiveMatchRoomModal = ({ tournament, onClose, onRaiseDispute }) => {
 
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleLaunch}
             className="action-btn-primary"
-            style={{ padding: '10px 24px', fontSize: '13px' }}
+            style={{
+              padding: '10px 24px',
+              fontSize: '13px',
+              background: isLaunching ? '#10b981' : undefined
+            }}
           >
-            Got It, Launch Game ➔
+            {isLaunching ? '✓ Registered! Launching...' : 'Got It, Launch Game ➔'}
           </button>
         </div>
 
